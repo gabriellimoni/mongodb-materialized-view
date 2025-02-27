@@ -6,4 +6,6 @@ if (!MONGODB_URI) {
   );
 }
 
-export const getMongoClient = async () => MongoClient.connect(MONGODB_URI);
+const client = await MongoClient.connect(MONGODB_URI);
+
+export const getMongoClient = async () => client;

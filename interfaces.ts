@@ -5,6 +5,6 @@ export interface Order {
     productId: string;
     valueInCents: number;
   }[];
-  paidAt: Date;
-  canceledAt: Date;
+  paidAt?: Date;
+  canceledAt?: Date;
 }
