@@ -1,16 +1,9 @@
-# replica-set-local
+# MongoDB leanings and talks
 
-To install dependencies:
+## Materialized views
 
-```bash
-bun install
-```
+TODO...
 
-To run:
+## Replica set
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-# mongodb-materialized-view
+TODO...

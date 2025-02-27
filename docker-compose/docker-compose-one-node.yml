@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  mongo1-one-node:
+    image: mongo:8.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27021"]
+    ports:
+      - 27021:27021
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27021'}]}) }" | mongosh --port 27021 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo1_one_node_new_data:/data/db"
+      - "mongo1_one_node_new_config:/data/configdb"
+
+volumes:
+  mongo1_one_node_new_data:
+  mongo1_one_node_new_config:
