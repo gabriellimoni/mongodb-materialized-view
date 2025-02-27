@@ -1,6 +1,6 @@
 import Chance from "chance";
-import type { Order } from "./interfaces";
-import { getMongoClient } from "./mongo";
+import type { Order } from "./_interfaces";
+import { getMongoClient } from "../mongo";
 const chance = new Chance();
 
 /**
@@ -43,3 +43,5 @@ const client = await getMongoClient();
 await client.db("demo_db").collection("orders").insertMany(data);
 
 console.log("data generated");
+
+process.exit();
