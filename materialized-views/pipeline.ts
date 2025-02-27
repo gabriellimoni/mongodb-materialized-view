@@ -61,3 +61,21 @@ export const mvPipeline = [
     $limit: 5,
   },
 ];
+
+const pipelineWithoutSomeStages = pipeline.filter(
+  (p) =>
+    !Object.keys(p).includes("$limit") &&
+    !Object.keys(p).includes("$sort") &&
+    !Object.keys(p).includes("$match")
+);
+
+export const pipelineWithMerge = [
+  ...pipelineWithoutSomeStages,
+  {
+    $merge: {
+      into: "_mv_orders",
+      whenMatched: "replace",
+      whenNotMatched: "insert",
+    },
+  },
+];
